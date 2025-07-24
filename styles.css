@@ -1,0 +1,450 @@
+/* Elker Scribes - Shared Styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@300;400;500&display=swap');
+
+/* CSS Variables */
+:root {
+  /* Colors from Elker design system */
+  --color-primary: #2c6971;
+  --color-accent: #5b72e8;
+  --color-button-bg: #8396f5;
+  --color-background: #f9f8f6;
+  --color-background-secondary: #f3f1ec;
+  --color-surface: #ffffff;
+  --color-text: #121826;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  
+  /* Typography */
+  --font-heading: "Lora", serif;
+  --font-body: "Inter", sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+/* Cards */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-body {
+  padding: 0;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button-primary {
+  background-color: var(--color-button-bg);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: var(--color-accent);
+  text-decoration: none;
+}
+
+.button-secondary {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.button-secondary:hover {
+  background-color: var(--color-background-secondary);
+  border-color: var(--color-text-muted);
+}
+
+/* Utility Classes */
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+.mb-2xl { margin-bottom: var(--spacing-2xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+.mt-2xl { margin-top: var(--spacing-2xl); }
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 768px) {
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scribe-specific Styles */
+.scribe-container {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-3xl);
+  margin: var(--spacing-2xl) 0;
+}
+
+/* Style the title and author when they're direct children */
+body > .scribe-title,
+.scribe-container > .scribe-title {
+  font-size: 2.75rem;
+  color: rgb(17, 24, 39);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+body > .scribe-author,
+.scribe-container > .scribe-author {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 2px solid var(--color-background-secondary);
+}
+
+.scribe-author a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Remove the br tags after author */
+.scribe-author + br,
+.scribe-author + br + br {
+  display: none;
+}
+
+/* Default step styling - each step is its own card */
+.scribe-step {
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* When a screenshot immediately follows a step, group them visually */
+.scribe-step:has(+ .scribe-screenshot-container) {
+  margin-bottom: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  border-bottom: none;
+}
+
+/* Style screenshot containers that follow steps */
+.scribe-step + .scribe-screenshot-container {
+  margin: 0 0 var(--spacing-2xl) 0;
+  padding: var(--spacing-xl);
+  background-color: var(--color-surface);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* For screenshot containers that don't follow a step (shouldn't happen but just in case) */
+.scribe-screenshot-container:not(.scribe-step + .scribe-screenshot-container) {
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.scribe-step-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tips styling */
+/* Target the parent div that contains a tip */
+.scribe-step:has(.scribe-step-tip) {
+  background-color: rgb(225, 244, 173);
+}
+
+/* For browsers without :has() support, at least style the text background */
+.scribe-step-tip {
+  background-color: rgb(225, 244, 173);
+  display: block;
+  margin: calc(var(--spacing-xl) * -1);
+  padding: var(--spacing-xl);
+}
+
+
+.scribe-step-tip .scribe-step-text::before {
+  content: "💡 ";
+  font-weight: 600;
+}
+
+.scribe-screenshot {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+/* Navigation for Index Page */
+.nav-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.nav-header h1 {
+  margin-bottom: 0;
+  color: rgb(17, 24, 39);
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.guide-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--spacing-xl);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+}
+
+.guide-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.guide-card h3 {
+  color: rgb(17, 24, 39);
+  margin-bottom: var(--spacing-sm);
+}
+
+.guide-card p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .scribe-container {
+    padding: var(--spacing-xl);
+  }
+  
+  .scribe-title {
+    font-size: 2rem;
+  }
+  
+  .container,
+  .container-narrow {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fallback for browsers without :has() support */
+@supports not selector(:has(+ *)) {
+  /* Make all steps standalone cards */
+  .scribe-step {
+    margin-bottom: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  /* Style screenshots as standalone cards too */
+  .scribe-step + .scribe-screenshot-container {
+    margin-top: calc(var(--spacing-xl) * -0.5);
+    border-radius: var(--radius-lg);
+    border-top: 1px solid var(--color-border);
+  }
+}

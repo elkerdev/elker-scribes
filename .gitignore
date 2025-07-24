@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Scripts (not needed for GitHub Pages)
+process-scribes.py
+process-scribes.js
+USAGE.md
+
+# Raw Scribe exports
+scribes/
+
+# Processed output (if you're tracking source only)
+# processed/
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Log files
+*.log
