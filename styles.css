@@ -448,7 +448,7 @@ body > .scribe-author,
   }
   
   h1 { 
-    font-size: 1.75rem; 
+    font-size: 1.5rem; 
     line-height: 1.2;
   }
   h2 { 
@@ -534,7 +534,7 @@ body > .scribe-author,
   }
   
   .nav-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   
   .nav-header p {
@@ -554,7 +554,7 @@ body > .scribe-author,
     font-size: 14px;
   }
   
-  h1 { font-size: 1.5rem; }
+  h1 { font-size: 1.25rem; }
   h2 { font-size: 1.25rem; }
   h3 { font-size: 1.125rem; }
   
