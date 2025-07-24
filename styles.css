@@ -59,6 +59,12 @@ body {
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+  /* Improve text rendering on mobile */
+  text-rendering: optimizeLegibility;
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Typography */
@@ -116,12 +122,16 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 .container-narrow {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 /* Cards */
@@ -361,6 +371,24 @@ body > .scribe-author,
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-border);
+  /* Ensure images don't overflow on mobile */
+  display: block;
+  margin: 0 auto;
+}
+
+/* Mobile image optimizations */
+@media (max-width: 768px) {
+  .scribe-screenshot {
+    border-radius: var(--radius-sm);
+    /* Allow pinch-to-zoom on mobile */
+    touch-action: pinch-zoom;
+  }
+  
+  /* Make clickable areas larger for touch */
+  .scribe-screenshot-container a {
+    display: block;
+    padding: var(--spacing-xs);
+  }
 }
 
 /* Navigation for Index Page */
@@ -412,26 +440,160 @@ body > .scribe-author,
 }
 
 /* Responsive Design */
+/* Mobile-first improvements */
 @media (max-width: 768px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
+  /* Typography adjustments for better readability on mobile */
+  body {
+    font-size: 15px;
+  }
   
+  h1 { 
+    font-size: 1.75rem; 
+    line-height: 1.2;
+  }
+  h2 { 
+    font-size: 1.5rem; 
+    line-height: 1.25;
+  }
+  h3 { 
+    font-size: 1.25rem; 
+    line-height: 1.3;
+  }
+  h4 { font-size: 1.125rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.875rem; }
+  
+  /* Reduce padding on mobile for better space utilization */
   .scribe-container {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
   }
   
   .scribe-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    text-align: center;
   }
   
+  /* Smaller container padding on mobile */
   .container,
   .container-narrow {
     padding: 0 var(--spacing-md);
   }
   
+  /* Single column grid on mobile */
   .guide-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  /* Improve card layout on mobile */
+  .card {
+    padding: var(--spacing-lg);
+  }
+  
+  .guide-card {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Better touch targets for mobile */
+  .button {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Scribe step improvements */
+  .scribe-step {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .scribe-step-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Screenshot container adjustments */
+  .scribe-step + .scribe-screenshot-container {
+    padding: var(--spacing-md);
+  }
+  
+  /* Tip styling adjustments */
+  .scribe-step-tip {
+    margin: calc(var(--spacing-lg) * -1);
+    padding: var(--spacing-lg);
+  }
+  
+  /* Navigation header improvements */
+  .nav-header {
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .nav-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .nav-header p {
+    font-size: 0.875rem;
+  }
+  
+  /* List improvements for mobile */
+  ul, ol {
+    margin-left: var(--spacing-lg);
+  }
+}
+
+/* Small mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Further reduce font sizes for very small screens */
+  body {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+  
+  /* Minimize padding on very small screens */
+  .container,
+  .container-narrow {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .scribe-container {
+    padding: var(--spacing-md);
+    border-radius: var(--radius);
+  }
+  
+  .scribe-step {
+    padding: var(--spacing-md);
+  }
+  
+  .guide-card {
+    padding: var(--spacing-md);
+  }
+  
+  /* Stack buttons on very small screens */
+  .button {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape mode */
+  .scribe-container {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+  
+  .nav-header {
+    padding: var(--spacing-sm) 0;
+    margin-bottom: var(--spacing-lg);
   }
 }
 
@@ -516,15 +678,33 @@ body > .scribe-author,
   .scribe-navigation {
     position: static;
     margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-sm);
+    /* Make navigation collapsible on mobile */
+    max-height: 60vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .container-narrow:has(.scribe-navigation) {
     display: block;
   }
   
+  .scribe-navigation .nav-title {
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+  }
+  
   .scribe-navigation .nav-link {
     font-size: 0.875rem;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    /* Better touch targets */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .scribe-navigation .nav-link.active {
+    font-weight: 600;
   }
 }
 
