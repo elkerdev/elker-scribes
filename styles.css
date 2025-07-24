@@ -119,7 +119,7 @@ a:hover {
 }
 
 .container-narrow {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
 }
@@ -247,13 +247,16 @@ a:hover {
   margin: var(--spacing-2xl) 0;
 }
 
+
 /* Style the title and author when they're direct children */
 body > .scribe-title,
 .scribe-container > .scribe-title {
   font-size: 2.75rem;
   color: rgb(17, 24, 39);
   margin-bottom: var(--spacing-lg);
-  text-align: center;
+  text-align: left;
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
 }
 
 body > .scribe-author,
@@ -446,5 +449,94 @@ body > .scribe-author,
     margin-top: calc(var(--spacing-xl) * -0.5);
     border-radius: var(--radius-lg);
     border-top: 1px solid var(--color-border);
+  }
+}
+
+/* In-Page Navigation Styles */
+.scribe-navigation {
+  position: sticky;
+  top: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-md);
+}
+
+.scribe-navigation .nav-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(17, 24, 39);
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-body);
+}
+
+.scribe-navigation .nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scribe-navigation .nav-item {
+  margin-bottom: 2px;
+}
+
+.scribe-navigation .nav-link {
+  display: block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.scribe-navigation .nav-link:hover {
+  background-color: var(--color-background-secondary);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.scribe-navigation .nav-link.active {
+  background-color: var(--color-background-secondary);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Adjust container layout when navigation is present */
+.container-narrow:has(.scribe-navigation) {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+/* Make navigation full width on mobile */
+@media (max-width: 768px) {
+  .scribe-navigation {
+    position: static;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .container-narrow:has(.scribe-navigation) {
+    display: block;
+  }
+  
+  .scribe-navigation .nav-link {
+    font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+/* Fallback for browsers without :has() support - navigation will still work but won't have grid layout */
+@supports not selector(:has(.scribe-navigation)) {
+  .scribe-navigation {
+    max-width: 250px;
+    float: left;
+    margin-right: var(--spacing-2xl);
+  }
+  
+  .scribe-container {
+    clear: both;
   }
 }

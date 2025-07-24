@@ -13,11 +13,13 @@ Thumbs.db
 *.swp
 *.swo
 
-# Scripts (not needed for GitHub Pages)
+# Non-web files (only track HTML, CSS, JS for guides)
 process-scribes.py
 process-scribes.js
 USAGE.md
 CLAUDE.md
+README.md
+scribe-template.html
 
 # Raw Scribe exports
 scribes/

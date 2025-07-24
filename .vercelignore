@@ -1,0 +1,46 @@
+# Documentation and repository files
+README.md
+LICENSE
+CONTRIBUTING.md
+CLAUDE.md
+USAGE.md
+
+# Git files
+.git/
+.gitignore
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Development files
+*.log
+*.tmp
+node_modules/
+package*.json
+
+# Processing scripts
+process-scribes.py
+process-scribes.js
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Raw Scribe exports directory
+scribes/
+
+# Template file (not needed for serving)
+scribe-template.html
+
+# Backup files
+*.bak
+*~
+
+# Vercel configuration (still used but not served)
+# vercel.json is used by Vercel but not served as a public file
