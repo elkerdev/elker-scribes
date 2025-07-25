@@ -380,8 +380,8 @@ body > .scribe-author,
 @media (max-width: 768px) {
   .scribe-screenshot {
     border-radius: var(--radius-sm);
-    /* Allow pinch-to-zoom on mobile */
-    touch-action: pinch-zoom;
+    /* Allow normal scrolling and pinch-to-zoom on mobile */
+    touch-action: auto;
     /* Make images use full available width */
     width: 100%;
     max-width: none;
@@ -453,6 +453,7 @@ body > .scribe-author,
   h1 { 
     font-size: 1.5rem !important; 
     line-height: 1.2;
+    margin-top: var(--spacing-xl);
   }
   h2 { 
     font-size: 1.35rem !important; 
@@ -566,7 +567,10 @@ body > .scribe-author,
     font-size: 14px;
   }
   
-  h1 { font-size: 1.25rem !important; }
+  h1 { 
+    font-size: 1.25rem !important; 
+    margin-top: var(--spacing-lg);
+  }
   h2 { font-size: 1.15rem !important; }
   h3 { font-size: 1.05rem !important; }
   
