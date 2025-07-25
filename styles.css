@@ -382,12 +382,15 @@ body > .scribe-author,
     border-radius: var(--radius-sm);
     /* Allow pinch-to-zoom on mobile */
     touch-action: pinch-zoom;
+    /* Make images use full available width */
+    width: 100%;
+    max-width: none;
   }
   
   /* Make clickable areas larger for touch */
   .scribe-screenshot-container a {
     display: block;
-    padding: var(--spacing-xs);
+    padding: 0;
   }
 }
 
@@ -448,36 +451,38 @@ body > .scribe-author,
   }
   
   h1 { 
-    font-size: 1.5rem; 
+    font-size: 1.5rem !important; 
     line-height: 1.2;
   }
   h2 { 
-    font-size: 1.5rem; 
+    font-size: 1.35rem !important; 
     line-height: 1.25;
   }
   h3 { 
-    font-size: 1.25rem; 
+    font-size: 1.2rem !important; 
     line-height: 1.3;
   }
-  h4 { font-size: 1.125rem; }
-  h5 { font-size: 1rem; }
-  h6 { font-size: 0.875rem; }
+  h4 { font-size: 1.1rem !important; }
+  h5 { font-size: 1rem !important; }
+  h6 { font-size: 0.875rem !important; }
   
   /* Reduce padding on mobile for better space utilization */
   .scribe-container {
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: var(--radius);
   }
   
-  .scribe-title {
-    font-size: 1.75rem;
+  body > .scribe-title,
+  .scribe-container > .scribe-title {
+    font-size: 1.5rem !important;
     text-align: center;
   }
   
   /* Smaller container padding on mobile */
   .container,
   .container-narrow {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
   }
   
   /* Single column grid on mobile */
@@ -507,8 +512,9 @@ body > .scribe-author,
   
   /* Scribe step improvements */
   .scribe-step {
-    padding: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius);
   }
   
   .scribe-step-text {
@@ -516,15 +522,21 @@ body > .scribe-author,
     line-height: 1.5;
   }
   
-  /* Screenshot container adjustments */
+  /* Screenshot container adjustments - maximize image space */
   .scribe-step + .scribe-screenshot-container {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .scribe-screenshot-container:not(.scribe-step + .scribe-screenshot-container) {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
   }
   
   /* Tip styling adjustments */
   .scribe-step-tip {
-    margin: calc(var(--spacing-lg) * -1);
-    padding: var(--spacing-lg);
+    margin: calc(var(--spacing-md) * -1);
+    padding: var(--spacing-md);
   }
   
   /* Navigation header improvements */
@@ -534,7 +546,7 @@ body > .scribe-author,
   }
   
   .nav-header h1 {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
   }
   
   .nav-header p {
@@ -554,23 +566,29 @@ body > .scribe-author,
     font-size: 14px;
   }
   
-  h1 { font-size: 1.25rem; }
-  h2 { font-size: 1.25rem; }
-  h3 { font-size: 1.125rem; }
+  h1 { font-size: 1.25rem !important; }
+  h2 { font-size: 1.15rem !important; }
+  h3 { font-size: 1.05rem !important; }
   
   /* Minimize padding on very small screens */
   .container,
   .container-narrow {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
   }
   
   .scribe-container {
-    padding: var(--spacing-md);
-    border-radius: var(--radius);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
   }
   
   .scribe-step {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+  }
+  
+  body > .scribe-title,
+  .scribe-container > .scribe-title {
+    font-size: 1.25rem !important;
   }
   
   .guide-card {
