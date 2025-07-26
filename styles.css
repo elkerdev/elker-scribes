@@ -494,13 +494,13 @@ body > .scribe-author,
   /* Better container padding on mobile */
   .container,
   .container-narrow {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-lg);
   }
   
   /* Single column grid on mobile */
   .guide-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
   }
   
   /* Improve card layout on mobile */
@@ -590,7 +590,7 @@ body > .scribe-author,
   /* Maintain reasonable padding on very small screens */
   .container,
   .container-narrow {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-md);
   }
   
   .scribe-container {
