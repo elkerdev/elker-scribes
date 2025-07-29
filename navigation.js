@@ -7,6 +7,7 @@
   // Wait for DOM to be fully loaded
   document.addEventListener('DOMContentLoaded', function() {
     generateNavigation();
+    handleSearchNavigation();
   });
 
   function generateNavigation() {
@@ -20,8 +21,9 @@
     // If no sections, check for steps (flat structure)
     const steps = document.querySelectorAll('.scribe-step');
     
-    // Don't create navigation for very short guides
-    if (sections.length < 2 && steps.length < 5) return;
+    // Only create navigation if we have actual section headings
+    // Don't create artificial navigation for flat step-by-step guides
+    if (sections.length < 2) return;
 
     // Create navigation container
     const nav = document.createElement('nav');
@@ -32,41 +34,14 @@
     navList.className = 'nav-list';
 
     // Generate IDs and create navigation items
-    if (sections.length > 0) {
-      // Sectioned structure
-      sections.forEach((section, index) => {
-        const text = section.textContent.trim();
-        const id = generateId(text, index);
-        section.id = id;
+    sections.forEach((section, index) => {
+      const text = section.textContent.trim();
+      const id = generateId(text, index);
+      section.id = id;
 
-        const navItem = createNavItem(text, id);
-        navList.appendChild(navItem);
-      });
-    } else if (steps.length > 0) {
-      // Flat structure - group steps into logical sections
-      let currentSection = null;
-      let stepGroups = [];
-      
-      steps.forEach((step, index) => {
-        const stepText = step.querySelector('.scribe-step-text');
-        if (!stepText) return;
-        
-        const text = stepText.textContent.trim();
-        const stepNumber = index + 1;
-        
-        // Create navigation entries for every 5 steps or at natural breaks
-        if (index % 5 === 0 || isNaturalBreak(text)) {
-          const sectionTitle = `Steps ${stepNumber}-${Math.min(stepNumber + 4, steps.length)}`;
-          const id = `section-${Math.floor(index / 5) + 1}`;
-          
-          // Add ID to the first step of this group
-          step.id = id;
-          
-          const navItem = createNavItem(sectionTitle, id);
-          navList.appendChild(navItem);
-        }
-      });
-    }
+      const navItem = createNavItem(text, id);
+      navList.appendChild(navItem);
+    });
 
     // Only add navigation if we have items
     if (navList.children.length > 0) {
@@ -186,5 +161,40 @@
     
     // Initial update
     updateActiveSection();
+  }
+  
+  function handleSearchNavigation() {
+    // Handle navigation from search results
+    if (window.location.hash && window.location.hash.includes('#step-')) {
+      const hash = window.location.hash;
+      const stepMatch = hash.match(/#step-(\d+)/);
+      
+      if (stepMatch) {
+        const stepNumber = parseInt(stepMatch[1]);
+        const steps = document.querySelectorAll('.scribe-step');
+        
+        if (steps[stepNumber - 1]) {
+          // Add ID to the step if it doesn't have one
+          const step = steps[stepNumber - 1];
+          if (!step.id) {
+            step.id = `step-${stepNumber}`;
+          }
+          
+          // Highlight the step
+          step.style.backgroundColor = 'var(--color-highlight)';
+          step.style.transition = 'background-color 0.3s';
+          
+          // Scroll to the step
+          setTimeout(() => {
+            step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Remove highlight after 3 seconds
+            setTimeout(() => {
+              step.style.backgroundColor = '';
+            }, 3000);
+          }, 100);
+        }
+      }
+    }
   }
 })();
